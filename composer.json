@@ -1,0 +1,12 @@
+{
+    "name": "taras/php_advanced_hw",
+    "authors": [
+        {
+            "name": "tderenko",
+            "email": "tarasid23@gmail.com"
+        }
+    ],
+    "require": {
+        "larapack/dd": "^1.1"
+    }
+}
