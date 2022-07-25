@@ -6,6 +6,9 @@
             "email": "tarasid23@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": { "app\\": "" }
+    },
     "require": {
         "larapack/dd": "^1.1"
     }
