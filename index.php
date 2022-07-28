@@ -16,3 +16,7 @@ $smsNotification->setMessage('Test SMS message');
 
 sendNotification($emailNofitication);
 sendNotification($smsNotification);
+
+
+$test = new \app\homework\hw_6\Test();
+echo $test->getSum();
