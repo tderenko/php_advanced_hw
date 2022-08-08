@@ -1,12 +1,12 @@
 <?php
 
 
-namespace app\homework\hw_6;
+namespace homework\hw_6;
 
 
-use app\homework\hw_6\traits\Trait1;
-use app\homework\hw_6\traits\Trait2;
-use app\homework\hw_6\traits\Trait3;
+use homework\hw_6\traits\Trait1;
+use homework\hw_6\traits\Trait2;
+use homework\hw_6\traits\Trait3;
 
 class Test
 {

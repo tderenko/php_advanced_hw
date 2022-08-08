@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\homework\hw_6;
+namespace homework\hw_6;
 
 
 class EmailNotification extends Notificator

@@ -1,33 +1,17 @@
 <?php
 
-use app\classes\Currency;
-use app\classes\Money;
+use classes\Currency;
+use classes\Money;
 
-require_once __DIR__ . '/vendor/autoload.php';
+spl_autoload_register(function ($class) {
+    $path = __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
+    if (!file_exists($path)) {
+        throw new Exception("Class \"$class\" in \"$path\" not found!!!");
+    }
+    include_once $path;
+});
 
-// homework number 8
+$currency = new Currency('UAH');
+$money = new Money(123, $currency);
 
-try {
-    new Currency("TEST");
-} catch (\app\classes\InvalidArgumentException $e) {
-    echo "{$e->getMessage()} <br>";
-}
-
-$money1 = new Money(124.2, new Currency('UAH'));
-$money2 = new Money(14, new Currency('USD'));
-$money3 = new Money(26.53, new Currency('EUR'));
-$money4 = new Money(12.5, new Currency('USD'));
-$money5 = new Money(18.7, new Currency('USD'));
-
-try {
-    $money1->add($money3);
-} catch (\app\classes\InvalidArgumentException $e) {
-    echo "Invalid argument: {$e->getMessage()} <br>";
-} catch (Exception $e){
-    echo "Error: {$e->getMessage()} <br>";
-} finally {
-    $money2
-        ->add($money4)
-        ->add($money5);
-    dd($money2);
-}
+echo '<pre>', print_r($money, true), '</pre>';

@@ -1,5 +1,5 @@
 <?php
-namespace app\homework\hw_5;
+namespace homework\hw_5;
 
 class User
 {

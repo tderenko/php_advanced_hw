@@ -1,8 +1,8 @@
 <?php
 
-namespace app\homework\hw_6;
+namespace homework\hw_6;
 
-use app\homework\hw_6\contracts\SenderInterface;
+use homework\hw_6\contracts\SenderInterface;
 
 abstract class Notificator implements SenderInterface
 {

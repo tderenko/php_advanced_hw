@@ -1,6 +1,6 @@
 <?php
 
-namespace app\homework\hw_4;
+namespace homework\hw_4;
 
 use Exception;
 

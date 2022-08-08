@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\classes;
+namespace classes;
 
 
 class InvalidArgumentException extends \Exception

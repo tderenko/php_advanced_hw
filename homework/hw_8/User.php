@@ -1,6 +1,6 @@
 <?php
 
-namespace app\homework\hw_8;
+namespace homework\hw_8;
 
 class User
 {
