@@ -5,7 +5,7 @@ networks:
     driver: bridge
 
 volumes:
-  psql_volume:
+  database:
     driver: local
 
 services:
@@ -16,13 +16,16 @@ services:
     volumes:
     - ./:/var/www/html
     restart: always
-  psql:
-    image: "postgres:14.4"
+  db:
+    image: "mysql:8.0"
     restart: always
+    ports:
+    - 36060:3606
     environment:
-      POSTGRES_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: php_advance
     volumes:
-    - "psql_volume:/var/lib/postgresql/data"
+    - "database:/var/lib/mysql"
   adminer:
     image: "adminer:4.8.1"
     restart: always
