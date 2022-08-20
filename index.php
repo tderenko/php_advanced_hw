@@ -4,41 +4,21 @@
  */
 
 
+use homework\hw_15\delivers\DeliverByEmail;
+use homework\hw_15\delivers\DeliverBySms;
+use homework\hw_15\delivers\DeliverToConsole;
+use homework\hw_15\formats\RawFormat;
+use homework\hw_15\formats\WithDateAndDetailsFormat;
+use homework\hw_15\formats\WithDateFormat;
+use homework\hw_15\Logger;
+
 require_once 'vendor/autoload.php';
 
-$user = new \classes\User();
-
-if (isset($_GET['id'])) {
-    $query = $dbConnection->prepare('SELECT * FROM users WHERE id = ?');
-    $query->setFetchMode(PDO::FETCH_CLASS, $user::class);
-    $query->execute([$_GET['id']]);
-    $user = $query->fetch() ?: $user;
-    if (!$user->getId()) {
-        $error = "the user id \"{$_GET['id']}\" is incorrect!!!";
-    }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-        switch ($_POST['action']) {
-            case 'create table':
-                $user->createTable();
-                break;
-            case 'remove users':
-                $user->removeUsers($_POST['delete']);
-                break;
-            case 'add user':
-                $user->addUser($_POST);
-                break;
-            case 'drop table':
-                $user->dropTable();
-                break;
-        };
-        header('location: /');
-        die;
-    } catch (Exception $e) {
-        $error = $e->getMessage();
-    }
-}
-
-require_once 'views/user.php';
+$logger = new Logger(new RawFormat(), new DeliverBySms());
+$logger->log('Emergency error! Please fix me!');
+echo "<br>";
+$logger = new Logger(new WithDateFormat(), new DeliverByEmail());
+$logger->log('Emergency error! Please fix me!');
+echo "<br>";
+$logger = new Logger(new WithDateAndDetailsFormat(), new DeliverToConsole());
+$logger->log('Emergency error! Please fix me!');
